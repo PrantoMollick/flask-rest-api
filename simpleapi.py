@@ -25,13 +25,21 @@ class PuppyNames(Resource):
 
     def delete(self, name):
         for ind, pup in enumerate(puppies):
-            if pup['name'] == name
-            delete_pup = puppies.pop(ind)
-            print(delete_pup)
-            return {'note':'Delete Success !'}
+            if pup['name'] == name:
+                delete_pup = puppies.pop(ind)
+                print(delete_pup)
+                return {'note':'Delete Success !'}
 
 
 class AllNames(Resource):
 
     def get(self):
-        
+        return {'puppies':puppies}
+
+
+
+api.add_resource(PuppyNames, '/puppy/<string:name>')
+api.add_resource(AllNames, '/puppies')
+
+
+
